@@ -37,9 +37,11 @@ const Nav = styled.div`
     font-size: 1.728rem;
     line-height: 1.5;
     font-weight: 400;
+    transition: all 0.2s ease-in-out;
   }
 
   a:hover {
+    transform: scale(1.1);
     color: #3683c2;
   }
 `
@@ -52,9 +54,15 @@ const MainArea = styled.div`
 const Logo = styled(Img)`
   width: 70%;
   margin-left: -10px;
+
+  transition: all 2s ease-in-out;
+
+  :hover {
+    transform: scale(1.3);
+  }
 `
 
-const Social = styled.div`
+const SocialArea = styled.div`
   width: 100%;
   margin-top: 10px;
   display: flex;
@@ -72,6 +80,11 @@ const SocialIcon = styled.img`
   width: ${props => props.width};
   margin-top: ${props => props.marginTop};
   margin-left: ${props => props.marginLeft};
+  transition: all 0.2s ease-in-out;
+
+  :hover {
+    transform: scale(1.1);
+  }
 `
 
 const SocialButton = styled(Img)``
@@ -153,7 +166,7 @@ const Layout = ({ children }) => {
             <Link to="/about">About</Link>
           </Nav>
 
-          <Social>
+          <SocialArea>
             <a href="https://instagram.com/just4funkcrew">
               <SocialIcon
                 width="100%"
@@ -176,7 +189,7 @@ const Layout = ({ children }) => {
                 src={data.allWordpressWpMedia.edges[0].node.source_url}
               />
             </a>
-          </Social>
+          </SocialArea>
 
           <Footer>
             <Link to={"/sitemap"}>Sitemap</Link>

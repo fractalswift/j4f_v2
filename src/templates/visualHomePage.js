@@ -19,6 +19,9 @@ const Area = styled(animated.div)`
 
 const FirstProject = styled(GridItem)`
   grid-area: first-project;
+  span {
+    font-size: 30px;
+  }
 `
 
 const AboutUs = styled(GridItem)`
