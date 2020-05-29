@@ -26,8 +26,9 @@ const Area = styled(animated.div)`
 
 
     grid-template-areas:
-    "first-project"
+    
     "about-us"
+    "first-project"
     "three-projects"
    
     "homeinfo";
