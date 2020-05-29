@@ -8,15 +8,25 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import styled from "styled-components"
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 import { Helmet } from "react-helmet"
 import Img from "gatsby-image"
+
+import theme from "../../mediaQueries"
 
 // my styled components
 const PageWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-family: "Work Sans", Roboto, sans-serif;
+
+  @media (max-width: ${theme.breakpoints[1]}) {
+    // grid-template-columns: 1fr;
+    // grid-template-rows: 1fr 1fr 1fr 1fr;
+    // justify-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const Sidebar = styled.div`
@@ -25,6 +35,14 @@ const Sidebar = styled.div`
   flex-direction: column;
   padding-left: 50px;
   padding-top: 30px;
+  background-color: ${props => props.bgColor};
+  grid-column: 1;
+
+  @media (max-width: ${theme.breakpoints[1]}) {
+    // grid-row: 1;
+    padding-left: 0px;
+    padding-top: 0px;
+  }
 `
 
 const Nav = styled.div`
@@ -44,21 +62,38 @@ const Nav = styled.div`
     transform: scale(1.1);
     color: #3683c2;
   }
+
+  @media (max-width: ${theme.breakpoints[1]}) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 0px;
+
+    a {
+      font-size: 1rem;
+    }
+  }
 `
 
 const MainArea = styled.div`
   width: 100%;
+  grid-column: 2;
+
+  @media (max-width: ${theme.breakpoints[1]}) {
+    // background-color: red;
+    // grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
 `
 
-// Change alignment once I have a new logo
 const Logo = styled(Img)`
   width: 70%;
   margin-left: -10px;
 
-  transition: all 2s ease-in-out;
-
-  :hover {
-    transform: scale(1.3);
+  @media (max-width: ${theme.breakpoints[1]}) {
+    margin: auto;
   }
 `
 
@@ -74,26 +109,44 @@ const SocialArea = styled.div`
   a {
     text-align: left;
   }
+
+  @media (max-width: ${theme.breakpoints[1]}) {
+    margin-left: 1px;
+    margin-top: 1px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 212, 255, 0.4) 20%,
+      rgba(251, 145, 52, 0.5) 100%
+    );
+  }
 `
 
 const SocialIcon = styled.img`
   width: ${props => props.width};
-  margin-top: ${props => props.marginTop};
   margin-left: ${props => props.marginLeft};
   transition: all 0.2s ease-in-out;
 
   :hover {
     transform: scale(1.1);
   }
-`
 
-const SocialButton = styled(Img)``
+  @media (max-width: ${theme.breakpoints[1]}) {
+    width: 80px;
+
+    margin-top: 7px;
+  }
+`
 
 const Footer = styled.footer`
   display: flex;
-  flex-direction: column;
-  align-content: center;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 20vw 0 20vw;
   font-size: 16px;
+  grid-column: 2;
 
   a {
     text-decoration: none;
@@ -101,7 +154,7 @@ const Footer = styled.footer`
   }
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, sideColor }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery2 {
       site {
@@ -150,7 +203,7 @@ const Layout = ({ children }) => {
         />
       </Helmet>
       <PageWrapper>
-        <Sidebar siteTitle={data.site.siteMetadata.title}>
+        <Sidebar siteTitle={data.site.siteMetadata.title} bgColor={sideColor}>
           <Link to="/home">
             <Logo
               fluid={
@@ -173,30 +226,25 @@ const Layout = ({ children }) => {
                 src={data.allWordpressWpMedia.edges[1].node.source_url}
               />
             </a>
-
             <a href="https://youtube.com/just4funkproductions">
               <SocialIcon
-                marginLeft="40px"
-                width="70%"
                 src={data.allWordpressWpMedia.edges[3].node.source_url}
               />
             </a>
+
             <a href="https://facebook.com/just4funk">
               <SocialIcon
-                width="75%"
-                marginLeft="35px"
                 marginTop="30px"
                 src={data.allWordpressWpMedia.edges[0].node.source_url}
               />
             </a>
           </SocialArea>
-
-          <Footer>
-            <Link to={"/sitemap"}>Sitemap</Link>
-            <Link to={"/privacy-policy-2"}>Privacy Policy</Link>
-          </Footer>
         </Sidebar>
         <MainArea>{children}</MainArea>
+        <Footer>
+          <Link to={"/sitemap"}>Sitemap</Link> {"  |  "}
+          <Link to={"/privacy-policy-2"}> Privacy Policy</Link>
+        </Footer>
       </PageWrapper>
     </>
   )

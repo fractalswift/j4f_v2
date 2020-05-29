@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Link } from "gatsby"
+import theme from "../../mediaQueries"
 
 const GridItem = styled(Link)`
   position: relative;
@@ -44,6 +45,10 @@ const GridItem = styled(Link)`
     > div img {
       transform: scale(1.1);
     }
+  }
+
+  @media (max-width: ${theme.breakpoints[1]}) {
+    width: 100vw;
   }
 `
 

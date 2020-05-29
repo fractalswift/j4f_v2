@@ -6,15 +6,35 @@ import { animated, useSpring, config } from "react-spring"
 import Layout from "../components/layout2"
 import GridItem from "../components/GridItem"
 import SEO from "../components/SEO"
+import theme from "../../mediaQueries"
 
 const Area = styled(animated.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 35vw 40vw 25vw;
+  grid-template-rows: 35vw 40vw auto;
   grid-template-areas:
     "first-project about-us about-us"
     "three-projects three-projects three-projects"
     "homeinfo homeinfo homeinfo";
+   
+
+  @media (max-width: ${theme.breakpoints[1]}) {
+    display:grid;
+
+    grid-template-rows: 35vw 35vw  120vw auto;
+
+
+
+    grid-template-areas:
+    "first-project"
+    "about-us"
+    "three-projects"
+   
+    "homeinfo";
+
+
+
+  
 `
 
 const FirstProject = styled(GridItem)`
@@ -22,22 +42,39 @@ const FirstProject = styled(GridItem)`
   span {
     font-size: 30px;
   }
+
+  @media (max-width: ${theme.breakpoints[1]}) {
+   max-width:100vw;
+
 `
 
 const AboutUs = styled(GridItem)`
   grid-area: about-us;
+  @media (max-width: ${theme.breakpoints[1]}) {
+    max-width:100vw;
+ 
 `
 
 const ThreeProjects = styled.div`
   grid-area: three-projects;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: ${theme.breakpoints[1]}) {
+    grid-area: three-projects;
+    display: grid;
+    grid-template-columns: 1fr;
+    height: auto;
+  }
 `
 
 const HomeInfo = styled.div`
   grid-area: homeinfo;
   padding: 8px 8px;
   text-align: center;
+  @media (max-width: ${theme.breakpoints[1]}) {
+    padding: 8vw;
+  }
 `
 
 export default ({ pageContext }) => {
@@ -73,7 +110,7 @@ export default ({ pageContext }) => {
   `)
 
   return (
-    <Layout>
+    <Layout sideColor="white">
       <Area style={pageAnimation}>
         <FirstProject
           to={"/dance-workshops-for-schools-youth-clubs-organisations"}
