@@ -71,8 +71,8 @@ module.exports = {
         perPage: 100,
         // Search and Replace Urls across WordPress content.
         searchAndReplaceContentUrls: {
-          sourceUrl: "https://source-url.com",
-          replacementUrl: "https://replacement-url.com",
+          sourceUrl: "https://35.196.129.194",
+          replacementUrl: "https://j4f.fractalswift.com",
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
@@ -135,7 +135,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    "gatsby-plugin-styled-components",
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     `gatsby-image`,
     {

@@ -19,7 +19,7 @@ const Area = styled(animated.div)`
   @media (max-width: 1024px) {
     display:grid;
 
-    grid-template-rows: 35vw 35vw  120vw auto;
+    grid-template-rows: 70vw 70vw 210vw auto;
 
 
 
@@ -84,21 +84,19 @@ export default ({ pageContext }) => {
 
   const data = useStaticQuery(graphql`
     query HomeQuery {
-      allWordpressWpMedia(
+      allFile(
         filter: {
-          title: {
-            in: ["breakdance_shows", "videos", "news", "classes", "workshops"]
+          name: {
+            in: ["breakdance_shows", "classes", "news", "videos", "workshops"]
           }
         }
       ) {
         edges {
           node {
             id
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 800, quality: 95) {
-                  ...GatsbyImageSharpFluid
-                }
+            childImageSharp {
+              fluid(maxWidth: 400) {
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -114,52 +112,26 @@ export default ({ pageContext }) => {
           to={"/dance-workshops-for-schools-youth-clubs-organisations"}
         >
           <Img
-            key={
-              data.allWordpressWpMedia.edges[4].node.localFile.childImageSharp
-                .id
-            }
-            fluid={
-              data.allWordpressWpMedia.edges[4].node.localFile.childImageSharp
-                .fluid
-            }
+            key={data.allFile.edges[4].node.id}
+            fluid={data.allFile.edges[4].node.childImageSharp.fluid}
           />
           <span>Workshops</span>
         </FirstProject>
         <AboutUs to={"/shows"}>
-          <Img
-            fluid={
-              data.allWordpressWpMedia.edges[0].node.localFile.childImageSharp
-                .fluid
-            }
-          />
+          <Img fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
           <span>Shows</span>
         </AboutUs>
         <ThreeProjects>
           <GridItem to={"/breakdanceclasses"}>
-            <Img
-              fluid={
-                data.allWordpressWpMedia.edges[1].node.localFile.childImageSharp
-                  .fluid
-              }
-            />
+            <Img fluid={data.allFile.edges[1].node.childImageSharp.fluid} />
             <span>Classes</span>
           </GridItem>
           <GridItem to={"/videos-breakdance"}>
-            <Img
-              fluid={
-                data.allWordpressWpMedia.edges[2].node.localFile.childImageSharp
-                  .fluid
-              }
-            />
+            <Img fluid={data.allFile.edges[2].node.childImageSharp.fluid} />
             <span>Videos</span>
           </GridItem>
           <GridItem to={"/news"}>
-            <Img
-              fluid={
-                data.allWordpressWpMedia.edges[3].node.localFile.childImageSharp
-                  .fluid
-              }
-            />
+            <Img fluid={data.allFile.edges[3].node.childImageSharp.fluid} />
             <span>News</span>
           </GridItem>
         </ThreeProjects>

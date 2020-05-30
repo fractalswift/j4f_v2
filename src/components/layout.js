@@ -92,47 +92,31 @@ const Logo = styled(Img)`
   }
 `
 
-const SocialArea = styled.div`
-  width: 100%;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-left: -45px;
-
-  a {
-    text-align: left;
-  }
-
-  @media (max-width: 1024px) {
-    margin-left: 1px;
-    margin-top: 1px;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    background: linear-gradient(
-      90deg,
-      rgba(0, 212, 255, 0.4) 20%,
-      rgba(251, 145, 52, 0.5) 100%
-    );
-  }
-`
-
-const SocialIcon = styled.img`
-  width: ${props => props.width};
-  margin-left: ${props => props.marginLeft};
+const Glyph = styled(Img)`
+  width: 70%;
+  margin-left: -10px;
+  margin-top: 20px;
   transition: all 0.2s ease-in-out;
 
-  :hover {
+  &:hover {
     transform: scale(1.1);
   }
 
   @media (max-width: 1024px) {
-    width: 80px;
-
-    margin-top: 7px;
+    margin: 10px;
+    width: 60px;
   }
+`
+
+const SocialPanel = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 `
 
 const Footer = styled.footer`
@@ -158,27 +142,17 @@ const Layout = ({ children, sideColor }) => {
         }
       }
 
-      allWordpressWpMedia(
+      allFile(
         filter: {
-          title: {
-            in: [
-              "j4f_breakdance_logo"
-              "instagram_logo"
-              "facebook_logo"
-              "youtube_icon"
-            ]
-          }
+          name: { in: ["j4flogo", "facebook", "instagram", "youtube"] }
         }
       ) {
         edges {
           node {
             id
-            source_url
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 200, quality: 95) {
-                  ...GatsbyImageSharpFluid
-                }
+            childImageSharp {
+              fluid(maxWidth: 400) {
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -200,12 +174,7 @@ const Layout = ({ children, sideColor }) => {
       <PageWrapper>
         <Sidebar siteTitle={data.site.siteMetadata.title} bgColor={sideColor}>
           <Link to="/home">
-            <Logo
-              fluid={
-                data.allWordpressWpMedia.edges[2].node.localFile.childImageSharp
-                  .fluid
-              }
-            />
+            <Logo fluid={data.allFile.edges[2].node.childImageSharp.fluid} />
           </Link>
 
           <Nav>
@@ -213,27 +182,18 @@ const Layout = ({ children, sideColor }) => {
             <Link to="/contact">Contact</Link>
             <Link to="/about">About</Link>
           </Nav>
-
-          <SocialArea>
+          <SocialPanel>
             <a href="https://instagram.com/just4funkcrew">
-              <SocialIcon
-                width="100%"
-                src={data.allWordpressWpMedia.edges[1].node.source_url}
-              />
+              <Glyph fluid={data.allFile.edges[1].node.childImageSharp.fluid} />
             </a>
             <a href="https://youtube.com/just4funkproductions">
-              <SocialIcon
-                src={data.allWordpressWpMedia.edges[3].node.source_url}
-              />
+              <Glyph fluid={data.allFile.edges[3].node.childImageSharp.fluid} />
             </a>
 
             <a href="https://facebook.com/just4funk">
-              <SocialIcon
-                marginTop="30px"
-                src={data.allWordpressWpMedia.edges[0].node.source_url}
-              />
+              <Glyph fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
             </a>
-          </SocialArea>
+          </SocialPanel>
         </Sidebar>
         <MainArea>{children}</MainArea>
         <Footer>
