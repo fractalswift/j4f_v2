@@ -5,7 +5,6 @@ import styled from "styled-components"
 import { animated, useSpring, config } from "react-spring"
 import Layout from "../components/layout"
 import GridItem from "../components/GridItem"
-import SEO from "../components/SEO"
 
 const Area = styled(animated.div)`
   display: grid;
