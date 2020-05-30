@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { Link } from "gatsby"
-import theme from "../../mediaQueries"
 
 const GridItem = styled(Link)`
   position: relative;
@@ -47,7 +46,7 @@ const GridItem = styled(Link)`
     }
   }
 
-  @media (max-width: ${theme.breakpoints[1]}) {
+  @media (max-width: 1024px) {
     width: 100vw;
   }
 `

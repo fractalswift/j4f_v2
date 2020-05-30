@@ -1,24 +1,23 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { animated, useSpring, config } from "react-spring"
-import Layout from "../components/layout2"
+import Layout from "../components/layout"
 import GridItem from "../components/GridItem"
 import SEO from "../components/SEO"
-import theme from "../../mediaQueries"
 
 const Area = styled(animated.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 35vw 40vw auto;
   grid-template-areas:
-    "first-project about-us about-us"
+    "first-project shows shows"
     "three-projects three-projects three-projects"
     "homeinfo homeinfo homeinfo";
    
 
-  @media (max-width: ${theme.breakpoints[1]}) {
+  @media (max-width: 1024px) {
     display:grid;
 
     grid-template-rows: 35vw 35vw  120vw auto;
@@ -27,10 +26,9 @@ const Area = styled(animated.div)`
 
     grid-template-areas:
     
-    "about-us"
+    "shows"
     "first-project"
     "three-projects"
-   
     "homeinfo";
 
 
@@ -44,14 +42,14 @@ const FirstProject = styled(GridItem)`
     font-size: 30px;
   }
 
-  @media (max-width: ${theme.breakpoints[1]}) {
+  @media (max-width: 1024px) {
    max-width:100vw;
 
 `
 
 const AboutUs = styled(GridItem)`
-  grid-area: about-us;
-  @media (max-width: ${theme.breakpoints[1]}) {
+  grid-area: shows;
+  @media (max-width: 1024px) {
     max-width:100vw;
  
 `
@@ -61,7 +59,7 @@ const ThreeProjects = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
-  @media (max-width: ${theme.breakpoints[1]}) {
+  @media (max-width: 1024px) {
     grid-area: three-projects;
     display: grid;
     grid-template-columns: 1fr;
@@ -73,7 +71,7 @@ const HomeInfo = styled.div`
   grid-area: homeinfo;
   padding: 8px 8px;
   text-align: center;
-  @media (max-width: ${theme.breakpoints[1]}) {
+  @media (max-width: 1024px) {
     padding: 8vw;
   }
 `

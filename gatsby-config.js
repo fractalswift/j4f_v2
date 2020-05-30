@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Just 4 Funk Productions`,
+    description: `Front-end for Just 4 Funk website, connects to wordpress rest api`,
+    author: `@fractalswift`,
   },
   plugins: [
     {
@@ -12,7 +12,7 @@ module.exports = {
          * The base URL of the WordPress site without the trailingslash and the protocol. This is required.
          * Example : 'demo.wp-api.org' or 'www.example-site.com'
          */
-        baseUrl: "http://just4funkproductions.local/",
+        baseUrl: "http://35.196.129.194/index.php",
         // The protocol. This can be http or https.
         protocol: "http",
         // The rest api route prefix that your WordPress site is using.

@@ -1,7 +1,6 @@
 import React from "react"
-import Layout from "../components/layout2"
+import Layout from "../components/layout"
 import styled from "styled-components"
-import theme from "../../mediaQueries"
 
 const Page = styled.div`
   display: flex;
@@ -19,7 +18,7 @@ const Page = styled.div`
     width: 95%;
   }
 
-  @media (max-width: ${theme.breakpoints[1]}) {
+  @media (max-width: 1024px) {
     padding-left: 10px;
     padding-right: 30px;
     iframe {

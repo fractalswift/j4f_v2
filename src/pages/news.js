@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
-import Layout from "../components/layout2"
+import Layout from "../components/layout"
 
 const NewsItem = styled.div`
   width: 90%;
