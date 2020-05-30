@@ -8,7 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
+import styled from "styled-components"
 import { Helmet } from "react-helmet"
 import Img from "gatsby-image"
 import "./layout.css"
