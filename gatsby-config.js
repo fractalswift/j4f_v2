@@ -135,6 +135,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    "gatsby-plugin-styled-components",
     `gatsby-plugin-sharp`,
     `gatsby-image`,
     {
