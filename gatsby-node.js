@@ -31,7 +31,11 @@ exports.createPages = ({ graphql, actions }) => {
       `
         {
           allWordpressPage(
-            filter: { slug: { nin: ["home", "breakdanceclasses"] } }
+            filter: {
+              slug: {
+                nin: ["home", "breakdanceclasses", "photos", "resources"]
+              }
+            }
           ) {
             edges {
               node {
