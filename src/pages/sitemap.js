@@ -15,7 +15,9 @@ const Page = styled.div`
 const News = () => {
   const data = useStaticQuery(graphql`
     query SitemapQuery {
-      allWordpressPage {
+      allWordpressPage(
+        filter: { path: { nin: ["/home/", "/photos/", "/resources/"] } }
+      ) {
         edges {
           node {
             path
