@@ -64,6 +64,7 @@ const Nav = styled.div`
     flex-direction: row;
     justify-content: space-around;
     margin-top: 0px;
+    margin-bottom: 9px;
 
     a {
       font-size: 1rem;
@@ -90,6 +91,7 @@ const Logo = styled(Img)`
 
   @media (max-width: 1024px) {
     margin: auto;
+    margin-bottom: 9px;
   }
 `
 
