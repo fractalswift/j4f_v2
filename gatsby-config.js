@@ -1,10 +1,21 @@
 module.exports = {
   siteMetadata: {
     title: `Just 4 Funk Productions`,
-    description: `Front-end for Just 4 Funk website, connects to wordpress rest api`,
+    titleTemplate: "%s · Just 4 Funk Productions",
+    description: `Just 4 Funk Productions - Breaking | Breakdance | Streetdance`,
+    url: "https://www.just4funkproductions.com", // No trailing slash allowed!
+    image:
+      "https://www.just4funkproductions.com/static/4e846a77e4f15768587761e8ebfff137/ee604/j4flogo.png", // Path to your image you placed in the 'static' folder
+
     author: `@fractalswift`,
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-html-attributes",
+      options: {
+        lang: "en",
+      },
+    },
     {
       resolve: "gatsby-source-wordpress",
       options: {
@@ -138,6 +149,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     `gatsby-image`,
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

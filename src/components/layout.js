@@ -9,9 +9,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
-import { Helmet } from "react-helmet"
 import Img from "gatsby-image"
 import "./layout.css"
+import SEO from "./seo"
+
 // my styled components
 const PageWrapper = styled.div`
   display: grid;
@@ -163,39 +164,49 @@ const Layout = ({ children, sideColor }) => {
 
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Just 4 Funk</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
+      <SEO />
+      <a style={{ display: "none" }} href="#main">
+        skip to main
+      </a>
+      <a style={{ display: "none" }} href="#nav">
+        skip to navigation
+      </a>
       <PageWrapper>
         <Sidebar siteTitle={data.site.siteMetadata.title} bgColor={sideColor}>
           <Link to="/">
             <Logo fluid={data.allFile.edges[2].node.childImageSharp.fluid} />
           </Link>
 
-          <Nav>
+          <Nav id="nav">
             <Link to="/">Home</Link>
             <Link to="/contact">Contact</Link>
             <Link to="/about">About</Link>
           </Nav>
           <SocialPanel>
             <a href="https://instagram.com/just4funkcrew">
-              <Glyph fluid={data.allFile.edges[1].node.childImageSharp.fluid} />
+              <Glyph
+                alt="instagram logo, click to go to just 4 funk instagram"
+                fluid={data.allFile.edges[1].node.childImageSharp.fluid}
+              />
             </a>
             <a href="https://youtube.com/just4funkproductions">
-              <Glyph fluid={data.allFile.edges[3].node.childImageSharp.fluid} />
+              <Glyph
+                alt="youtube logo, click to go to just 4 funk youtube"
+                fluid={data.allFile.edges[3].node.childImageSharp.fluid}
+              />
             </a>
 
             <a href="https://facebook.com/just4funk">
-              <Glyph fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
+              <Glyph
+                alt="facebook logo, click to go to just 4 funk facebook"
+                fluid={data.allFile.edges[0].node.childImageSharp.fluid}
+              />
             </a>
           </SocialPanel>
         </Sidebar>
-        <MainArea>{children}</MainArea>
+        <main id="main">
+          <MainArea>{children}</MainArea>
+        </main>
         <Footer>
           <Link to={"/sitemap"}>Sitemap</Link> {"  |  "}
           <Link to={"/privacy-policy-2"}> Privacy Policy</Link>

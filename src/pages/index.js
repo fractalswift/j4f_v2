@@ -84,7 +84,7 @@ const Index = () => {
 
   const data = useStaticQuery(graphql`
     query HomeQuery {
-      allFile(
+      desktop: allFile(
         filter: {
           name: {
             in: ["breakdance_shows", "classes", "news", "videos", "workshops"]
@@ -123,26 +123,39 @@ const Index = () => {
           to={"/dance-workshops-for-schools-youth-clubs-organisations"}
         >
           <Img
-            key={data.allFile.edges[4].node.id}
-            fluid={data.allFile.edges[4].node.childImageSharp.fluid}
+            alt="picture of just 4 funk breakdance workshop"
+            key={data.desktop.edges[4].node.id}
+            fluid={data.desktop.edges[4].node.childImageSharp.fluid}
           />
           <span>Workshops</span>
         </FirstProject>
         <AboutUs to={"/shows"}>
-          <Img fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
+          <Img
+            alt="picture of just 4 funk after a breakdance show"
+            fluid={data.desktop.edges[0].node.childImageSharp.fluid}
+          />
           <span>Shows</span>
         </AboutUs>
         <ThreeProjects>
           <GridItem to={"/breakdance_classes"}>
-            <Img fluid={data.allFile.edges[1].node.childImageSharp.fluid} />
+            <Img
+              alt="picture of just 4 funk after a breakdance class"
+              fluid={data.desktop.edges[1].node.childImageSharp.fluid}
+            />
             <span>Classes</span>
           </GridItem>
           <GridItem to={"/videos-breakdance"}>
-            <Img fluid={data.allFile.edges[2].node.childImageSharp.fluid} />
+            <Img
+              alt="picture of fin fromjust 4 funk, click to go to videos"
+              fluid={data.desktop.edges[2].node.childImageSharp.fluid}
+            />
             <span>Videos</span>
           </GridItem>
           <GridItem to={"/news"}>
-            <Img fluid={data.allFile.edges[3].node.childImageSharp.fluid} />
+            <Img
+              alt="picture of suga rush jumping in the air, click to go to news"
+              fluid={data.desktop.edges[3].node.childImageSharp.fluid}
+            />
             <span>News</span>
           </GridItem>
         </ThreeProjects>
