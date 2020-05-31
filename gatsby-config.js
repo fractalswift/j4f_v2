@@ -173,7 +173,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Just 4 Funk Productions`,
-        short_name: `starter`,
+        short_name: `just4funk`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
