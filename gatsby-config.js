@@ -71,7 +71,7 @@ module.exports = {
         perPage: 100,
         // Search and Replace Urls across WordPress content.
         searchAndReplaceContentUrls: {
-          sourceUrl: "https://35.196.129.194",
+          sourceUrl: "http://35.196.129.194",
           replacementUrl: "https://j4f.fractalswift.com",
         },
         // Set how many simultaneous requests are sent at once.

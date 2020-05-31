@@ -173,12 +173,12 @@ const Layout = ({ children, sideColor }) => {
       </Helmet>
       <PageWrapper>
         <Sidebar siteTitle={data.site.siteMetadata.title} bgColor={sideColor}>
-          <Link to="/home">
+          <Link to="/">
             <Logo fluid={data.allFile.edges[2].node.childImageSharp.fluid} />
           </Link>
 
           <Nav>
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
             <Link to="/contact">Contact</Link>
             <Link to="/about">About</Link>
           </Nav>

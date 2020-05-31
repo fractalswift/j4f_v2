@@ -75,7 +75,7 @@ const HomeInfo = styled.div`
   }
 `
 
-export default ({ pageContext }) => {
+const Index = () => {
   const pageAnimation = useSpring({
     config: config.slow,
     from: { opacity: 0 },
@@ -102,6 +102,17 @@ export default ({ pageContext }) => {
           }
         }
       }
+
+      allWordpressPage(filter: { slug: { eq: "home" } }) {
+        edges {
+          node {
+            id
+            slug
+            title
+            content
+          }
+        }
+      }
     }
   `)
 
@@ -122,7 +133,7 @@ export default ({ pageContext }) => {
           <span>Shows</span>
         </AboutUs>
         <ThreeProjects>
-          <GridItem to={"/breakdanceclasses"}>
+          <GridItem to={"/breakdance_classes"}>
             <Img fluid={data.allFile.edges[1].node.childImageSharp.fluid} />
             <span>Classes</span>
           </GridItem>
@@ -136,9 +147,15 @@ export default ({ pageContext }) => {
           </GridItem>
         </ThreeProjects>
         <HomeInfo>
-          <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data.allWordpressPage.edges[0].node.content,
+            }}
+          />
         </HomeInfo>
       </Area>
     </Layout>
   )
 }
+
+export default Index

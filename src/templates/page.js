@@ -31,7 +31,6 @@ const Page = styled.div`
 export default ({ pageContext }) => {
   return (
     <Layout sideColor="white">
-      {/* Server-side rendered so we can set innerHTML */}
       <div style={{ paddingLeft: "5px" }}>
         <h3 dangerouslySetInnerHTML={{ __html: pageContext.title }} />
 
