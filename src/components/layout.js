@@ -88,10 +88,11 @@ const MainArea = styled.div`
 const Logo = styled(Img)`
   width: 70%;
   margin-left: -10px;
+  margin-bottom: 11px;
 
   @media (max-width: 1024px) {
     margin: auto;
-    margin-bottom: 9px;
+    margin-bottom: 11px;
   }
 `
 
