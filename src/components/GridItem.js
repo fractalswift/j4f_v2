@@ -48,6 +48,9 @@ const GridItem = styled(Link)`
 
   @media (max-width: 1024px) {
     width: 100vw;
+    span {
+      font-size: 5vh;
+    }
   }
 `
 

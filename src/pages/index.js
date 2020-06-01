@@ -87,7 +87,13 @@ const Index = () => {
       desktop: allFile(
         filter: {
           name: {
-            in: ["breakdance_shows", "classes", "news", "videos", "workshops"]
+            in: [
+              "breakdance_classes"
+              "breakdance_news"
+              "breakdance_shows"
+              "breakdance_videos"
+              "breakdance_workshops"
+            ]
           }
         }
       ) {
@@ -132,7 +138,7 @@ const Index = () => {
         <AboutUs to={"/shows"}>
           <Img
             alt="picture of just 4 funk after a breakdance show"
-            fluid={data.desktop.edges[0].node.childImageSharp.fluid}
+            fluid={data.desktop.edges[2].node.childImageSharp.fluid}
           />
           <span>Shows</span>
         </AboutUs>
@@ -140,21 +146,21 @@ const Index = () => {
           <GridItem to={"/breakdance_classes"}>
             <Img
               alt="picture of just 4 funk after a breakdance class"
-              fluid={data.desktop.edges[1].node.childImageSharp.fluid}
+              fluid={data.desktop.edges[0].node.childImageSharp.fluid}
             />
             <span>Classes</span>
           </GridItem>
           <GridItem to={"/videos-breakdance"}>
             <Img
               alt="picture of fin fromjust 4 funk, click to go to videos"
-              fluid={data.desktop.edges[2].node.childImageSharp.fluid}
+              fluid={data.desktop.edges[3].node.childImageSharp.fluid}
             />
             <span>Videos</span>
           </GridItem>
           <GridItem to={"/news"}>
             <Img
               alt="picture of suga rush jumping in the air, click to go to news"
-              fluid={data.desktop.edges[3].node.childImageSharp.fluid}
+              fluid={data.desktop.edges[1].node.childImageSharp.fluid}
             />
             <span>News</span>
           </GridItem>
