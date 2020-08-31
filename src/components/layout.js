@@ -12,6 +12,7 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 import "./layout.css"
 import SEO from "./seo"
+import CookieConsent, { Cookies } from "react-cookie-consent"
 
 // my styled components
 const PageWrapper = styled.div`
@@ -167,6 +168,15 @@ const Layout = ({ children, sideColor }) => {
 
   return (
     <>
+      <CookieConsent
+        location="bottom"
+        buttonText="Accept"
+        declineButtonText="Decline"
+        cookieName="gatsby-gdpr-google-analytics"
+      >
+        This site uses cookies for google analytics so we know how many people
+        are visiting.
+      </CookieConsent>
       <SEO />
       <a style={{ display: "none" }} href="#main">
         skip to main
